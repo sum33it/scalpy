@@ -140,10 +140,12 @@ a given class with arguments:
 				function) as a function of wave number k and redshift z
 
 To calculate an atribute to a class,
+
 	>>> x.hubz(0)
 	>>> array(1.0)
 
 to calculate power spectrum
+
 	>>> x.Pk_wh(0.01,0.1)
 
 Alternatively, you can also use it like
