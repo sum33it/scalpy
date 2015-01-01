@@ -3,8 +3,8 @@ ScalPy: A python tool to study dynamical systems in cosmology
 ==================================================================
 This code solve dynamical system for scalar fields such as minimally coupled 
 quintessence, tachyon and Galilion. We have included two types of potential 
-for each scalar field: power law ($V(\phi)=\phi^n$) and exponential 
-($V(\phi) = \exp(K \phi)$) where n and K are real constants.
+for each scalar field: power law V(phi)=phi^n and exponential 
+V(phi) = exp(K*phi) where n and K are real constants.
 
 #############################
 
