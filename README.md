@@ -67,6 +67,7 @@ start your favourite python interpretor
 
 	>>> python
 or
+
 	>>> ipython
 
 then import scalpy
