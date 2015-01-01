@@ -12,11 +12,15 @@ Installation:
 =================
 In Linux system, install scalpy using pip
 
-	>>> sudo pip install scalpy
+	% sudo pip install scalpy
 
-or to install it using source, go to scalpy directory and run
+or to install it using source, download the tar file from the url
 
-	>>> sudo python setup.py install
+	https://github.com/sum33it/scalpy
+
+	% unzip scalpy-master.zip
+	% cd scalpy-master
+	% sudo python setup.py install
 
 
 Structure:
@@ -25,7 +29,7 @@ Structure:
 There are following important files in the code:
 
 
-1) scalars.py
+1) scalar.py
 
 This file solves the dynamical system for scalar field where we give initial 
 conditions ( at decoupling) on quantities like field evolution, slope of the 
@@ -40,6 +44,7 @@ density parameter of scalar field), this solves for the initial conditions neede
 decoupling.
 
 3) fluids.py
+
 This gives different observables for standard cosmological models such as LCDM, wCDM, w0waCDM
 In this file also, different observables such as luminosity distance, hubble parameter, 
 angular diameter distance, growth rate, growth function, power spectrum are defined.
