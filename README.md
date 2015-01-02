@@ -1,8 +1,8 @@
 ==================================================================
 ScalPy: A python tool to study dynamical systems in cosmology
 ==================================================================
-This code solve dynamical system for scalar fields such as minimally coupled 
-quintessence, tachyon and Galilion. We have included two types of potential 
+This code solves dynamical system for scalar fields such as minimally coupled 
+quintessence, tachyon and Galileon fields. We have included two types of potential 
 for each scalar field: power law V(phi)=phi^n and exponential 
 V(phi) = exp(K*phi) where n and K are real constants.
 
@@ -32,9 +32,9 @@ There are following important files in the code:
 1) scalar.py
 
 This file solves the dynamical system for scalar field where we give initial 
-conditions ( at decoupling) on quantities like field evolution, slope of the 
-potential etc as input (see below for details). In this file, different 
-observables such as luminosity distance, hubble parameter, angular diameter distance, 
+conditions (at decoupling) on quantities like field evolution, slope of the 
+potential etc. as input (see below for details). In this file, different 
+observables such as luminosity distance, Hubble parameter, angular diameter distance, 
 growth rate, growth function, power spectrum are defined.
 
 2) solver.py
@@ -45,8 +45,8 @@ decoupling.
 
 3) fluids.py
 
-This gives different observables for standard cosmological models such as LCDM, wCDM, w0waCDM
-In this file also, different observables such as luminosity distance, hubble parameter, 
+This gives different observables for standard cosmological models such as LCDM, wCDM, w0waCDM and GCG.
+In this file also, different observables such as luminosity distance, Hubble parameter, 
 angular diameter distance, growth rate, growth function, power spectrum are defined.
 
 4) transfer_func.py
@@ -92,7 +92,7 @@ sigma8 if you don't want to use default values which are
 (h = 0.67, Ob0 = 0.045, ns = 0.96, sigma_8 = 0.8)
 
 If you want to use tachyonic scalar field with exponential potential, you should 
-import the class named "tachyonexp". below is the present list of classes included in 
+import the class named "tachyonexp". Below is the present list of classes included in 
 the package with the arguments they need:
 
     scalarpow(Ophi_i,lambda_i,n): scalar field with power law potential
@@ -112,7 +112,7 @@ arguments are:
 
 
 There are many attributes of the corresponding class. These are the standard 
-cosmological functions such as normalized hubble parameter, density parameters for 
+cosmological functions such as normalized Hubble parameter, density parameters for 
 matter and scalar field, luminosity distance, etc. Below is the list of attributes to 
 a given class with arguments:
 
@@ -186,7 +186,7 @@ classes are:
 
 the atributes to these classes are:
 
-	hubz(z): dimensionless hubble parameter as a function of redshift z
+	hubz(z): dimensionless Hubble parameter as a function of redshift z
 	dis_z(z): comoving distance as a function of redshift z
 	ang_dis_z(z): angular diameter distance as a function of z
 	lum_dis_z(z): luminosity distance as a function of z
@@ -209,8 +209,8 @@ To calculate linear power spectrum at redshift z=0 and for k = 0.01 for w0waCDM 
 
 Here we have taken Om0=0.3, w0=-1.02 and w0 = 0.5
 
-Here also, One can give four more arguments while calling classes, namely Ob0, ns, h 
-and sigma_8 if one don't want to use default values of h = 0.7, Ob0 = 0.045, ns = 0.96 
+Here also, one can give four more arguments while importing classes, namely Ob0, ns, h 
+and sigma_8 if one doesn't want to use default values of h = 0.7, Ob0 = 0.045, ns = 0.96 
 and sigma_8 = 0.8 e.g.
 
 	>>> w0waCDM(0.3,-1.02,0.5,0.67,0.045,0.9634,0.83).Pk_bbks(1.0,0)
@@ -229,7 +229,7 @@ Some example (for plotting)
 	>>> pl.show()
 
 
-if you want to plot linear matter power spectrum on log scale from k = 0.001 to k = 1.0 at redshift z = 0
+If you want to plot linear matter power spectrum on log scale from k = 0.001 to k = 1.0 at redshift z = 0
 
 	>>> k = pl.logspace(-3,0,100)
 	>>> P = x.Pk_wh(k,0)
