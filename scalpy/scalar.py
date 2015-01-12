@@ -449,7 +449,7 @@ class galileonpow(scalarpow):
 		hubb=UnivariateSpline(self.n1,H,k=3,s=0)
 		return hubb(N)
 
-	def dis(self,N):
+	def co_dis_n(self,N):
 		H=((1.-self.sol()[999,0]**2.*(1+self.sol()[999,2]) - self.sol()[999,1]**2.)*np.exp(-3*self.n1)/((1.-self.sol()[:,0]**2.*(1+self.sol()[:,2]) - self.sol()[:,1]**2.)))**(0.5)
 		H1=np.exp(-self.n1)/H
 		tck3=interpolate.splrep(self.n1,H1,s=0)
