@@ -35,7 +35,7 @@ class scalarpow(object):
 		self.h = float(h)
 		self.sigma_8 = float(sigma_8)
 
-	n1 = np.linspace(np.log(0.001),0.0,1000)
+	n1 = np.linspace(np.log(1./1101),0.0,1000)
 
 	def f(self,x,efold):
 		g = (self.n-1.)/self.n
