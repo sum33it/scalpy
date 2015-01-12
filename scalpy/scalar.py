@@ -454,7 +454,7 @@ class galileonpow(scalarpow):
 		H1=np.exp(-self.n1)/H
 		tck3=interpolate.splrep(self.n1,H1,s=0)
 		rs=interpolate.splint(N,0,tck3)
-		return rs
+		return self.D_H()*rs
 
 	def om(self,N):
 		om1 = 1.-self.sol()[:,0]**2.*(1+self.sol()[:,2]) - self.sol()[:,1]**2.
