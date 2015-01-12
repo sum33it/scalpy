@@ -154,6 +154,7 @@ class scalarpow(object):
 		in units of Mpc
 		"""
 		d_l = self.co_dis_z(z)*(1.+z)
+		return d_l
 
 	# CMB Shift Parameter
 	def Rth(self,z):
