@@ -162,7 +162,6 @@ class scalarpow(object):
 		CMB Shift parameter
 		"""
 		return np.sqrt(self.om_z(0.))*(1+z)*self.ang_dis_z(z)/self.D_H()
-		return d_l
 
 	def t_H(self):
 		"""
