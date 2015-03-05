@@ -196,6 +196,10 @@ class scalarpow(object):
 
 	def om_z(self,z):
 		return self.om(np.log(1./(1.+z)))
+		
+	def Om_diag(self,z):
+		x = 1+z
+		return (self.hubz(x)**2. - 1)/(x**3. - 1.)
 
 	def deriv(self,y1,N):
 		return [y1[1],-(0.5-1.5*self.ophi(N)*self.eqn_state_n(N))*y1[1]+1.5*self.om(N)*y1[0]]
