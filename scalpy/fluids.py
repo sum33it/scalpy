@@ -105,6 +105,10 @@ class LCDM(object):
 
 	def om_z(self,z):
 		return self.om_a(1./(1.+z))
+		
+	def Om_diag(self,z):
+		x = 1+z
+		return (self.hubz(x)**2. - 1)/(x**3. - 1.)
 
 	a11 = np.linspace(0.001,1,1000)
 
