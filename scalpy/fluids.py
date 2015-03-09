@@ -77,6 +77,16 @@ class LCDM(object):
 		d_l = self.co_dis_z(z)*(1.+z)
 		return d_l
 
+	def time_delay_dis(self,zd,zs):
+		"""
+		Time delay distance used in strong lensing cosmography
+		(See Suyu et. al., Astrophys. J. 766, 70, 2013; arxiv:1208.6010)
+		zs = redshift at which the source is placed
+		zd = redshift at which the deflector (or lens) is present		
+		"""
+		D_ds = self.D_H()*quad(self.invhub,zd,zs)[0]
+		return (1+zd)*self.ang_dis_z(zd)*self.ang_dis_z(zs)/D_ds
+
 	def Rth(self,z):
 		"""
 		CMB Shift parameter (see  )
@@ -100,15 +110,35 @@ class LCDM(object):
 		lt = quad(integrand,0,z)[0]
 		return self.t_H()*lt
 
+	def age_by(self):
+		"""
+		Age of the Universe in units of billion years
+		"""
+		def integrand(z1):
+			return self.invhub(z1)/(1.+z1)
+		t0 = quad(integrand,0,np.inf)[0]
+		return self.t_H()*t0
+
 	def om_a(self,a):
+		"""
+		density parameter \Omega_{m} for matter as a function of scale factor a
+		"""
 		return self.Om0*a**(-3)/self.huba(a)**2.
 
 	def om_z(self,z):
+		"""
+		density parameter \Omega_{m} for matter as a function of scale factor a
+		"""
 		return self.om_a(1./(1.+z))
 		
 	def Om_diag(self,z):
+		"""
+		Om diagnostic
+		See Varun Sahni et. al., Phys. Rev. D. 78, 103502 (2008) for more details
+		"""
 		x = 1+z
 		return (self.hubz(x)**2. - 1)/(x**3. - 1.)
+
 
 	a11 = np.linspace(0.001,1,1000)
 
