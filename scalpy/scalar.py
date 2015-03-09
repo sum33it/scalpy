@@ -156,6 +156,16 @@ class scalarpow(object):
 		d_l = self.co_dis_z(z)*(1.+z)
 		return d_l
 
+	def time_delay_dis(self,zd,zs):
+		"""
+		Time delay distance used in strong lensing cosmography
+		(See Suyu et. al., Astrophys. J. 766, 70, 2013; arxiv:1208.6010)
+		zs = redshift at which the source is placed
+		zd = redshift at which the deflector (or lens) is present		
+		"""
+		D_ds = self.D_H()*quad(self.invhub,zd,zs)[0]
+		return (1+zd)*self.ang_dis_z(zd)*self.ang_dis_z(zs)/D_ds
+
 	# CMB Shift Parameter
 	def Rth(self,z):
 		"""
@@ -186,20 +196,39 @@ class scalarpow(object):
 		"""
 		return self.lookback_time_n(np.log(1./(1.+z)))
 
+	def age_by(self):
+		"""
+		Age of the Universe in units of billion years
+		"""
+		def integrand(z1):
+			return self.invhub(z1)/(1.+z1)
+		t0 = quad(integrand,0,np.inf)[0]
+		return self.t_H()*t0
+
 	def om(self,N):
+		"""
+		Density parameter for total matter \Omega_{m} as a function of efolding log(a)
+		"""
 		om1 = (1.-self.sol()[:,1])
 		omg = UnivariateSpline(self.n1,om1,k=3,s=0)
 		return omg(N)
 
 	def om_a(self,a):
+		"""
+		Density parameter for total matter \Omega_{m} as a function of scale factor a
+		"""
 		return self.om(np.log(a))
 
 	def om_z(self,z):
+		"""
+		Density parameter for total matter \Omega_{m0} as a function of redshift z
+		"""
 		return self.om(np.log(1./(1.+z)))
 		
 	def Om_diag(self,z):
 		x = 1+z
 		return (self.hubz(x)**2. - 1)/(x**3. - 1.)
+
 
 	def deriv(self,y1,N):
 		return [y1[1],-(0.5-1.5*self.ophi(N)*self.eqn_state_n(N))*y1[1]+1.5*self.om(N)*y1[0]]
