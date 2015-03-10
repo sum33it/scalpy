@@ -131,6 +131,7 @@ a given class with arguments:
 	age_by(): age of the universe in units of billion years
 	om_z(z): density parameter for matter as a function of z
 	Om_diag(z): Om diagnostic (given by Sahni et al) as a function of redshift z
+	Rth(z): CMB shift parameter as a function of redshift z
 	D_plus_z(z): growing mode solution of growth equation
 	fsigma8z(z): f*sigma8 as a function of z
 	Pk_bbks(k,z): linear matter power spectrum (Using BBKS transfer function) as a 
