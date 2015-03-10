@@ -22,10 +22,10 @@ setup(
     license = "GNU GENERAL PUBLIC LICENSE v3",
     long_description = long_description,
     packages = ['scalpy',],
-    classifiers = ['License :: GNU GPL v3 License',
+    classifiers = ['License :: OSI Approved :: GNU General Public License v3 (GPLv3) ',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
-                   'Topic :: Cosmology',
+                   'Topic :: Scientific/Engineering',
                    'Operating System :: OS Independent'
                    ]
 )
