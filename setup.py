@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name = 'ScalPy',
-    version = '0.1.0a',
+    version = '0.1.0b',
     install_requires = ['numpy', 'scipy',],
 
     # metadata for upload to PyPI
