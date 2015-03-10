@@ -126,8 +126,11 @@ a given class with arguments:
 	co_dis_z(z): comoving distance (Mpc) as a function of redshift z
 	ang_dis_z(z): angular diameter distance (Mpc) as a function of z
 	lum_dis_z(z): luminosity distance (Mpc) as a function of z
+	time_delay_dis(zd,zs): time delay distance; zd = redshift of lens, zs = redshift of source
 	lookback_time_z(z): lookback time (in billion years) as a funtion of z
+	age_by(): age of the universe in units of billion years
 	om_z(z): density parameter for matter as a function of z
+	Om_diag(z): Om diagnostic (given by Sahni et al) as a function of redshift z
 	D_plus_z(z): growing mode solution of growth equation
 	fsigma8z(z): f*sigma8 as a function of z
 	Pk_bbks(k,z): linear matter power spectrum (Using BBKS transfer function) as a 
@@ -190,7 +193,11 @@ the atributes to these classes are:
 	dis_z(z): comoving distance as a function of redshift z
 	ang_dis_z(z): angular diameter distance as a function of z
 	lum_dis_z(z): luminosity distance as a function of z
+	time_delay_dis(zd,zs): time delay distance; zd = redshift of lens, zs = redshift of source
+	lookback_time_z(z): lookback time (in billion years) as a funtion of z
+	age_by(): age of the universe in units of billion years
 	om_z(z): density parameter for matter as a function of z
+	Om_diag(z): Om diagnostic (given by Sahni et al) as a function of redshift z
 	Rth(z): CMB shift parameter as a function of redshift z
 	D_plus_z(z): growing mode solution of growth equation
 	fsigma8z(z): f*sigma8 as a function of z
