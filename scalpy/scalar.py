@@ -94,7 +94,7 @@ class scalarpow(object):
 
 	def hub(self,N):
 		"""
-		Dimensionless Hubble constant as a function of log(a)
+		Normalized Hubble parameter as a function of log(a)
 		"""
 		H=((1-self.sol()[999,1])*np.exp(-3*self.n1)/(1-self.sol()[:,1]))**(0.5)
 		hubb=UnivariateSpline(self.n1,H,k=3,s=0)
@@ -102,15 +102,21 @@ class scalarpow(object):
 
 	def hubp(self,N):
 		"""
-		Derivative of dimensionless hubble constant w.r.t. log(a)
+		Derivative of normalized hubble parameter w.r.t. log(a)
 		"""
 		return derivative(self.hub,N,dx=1e-6)
 
 	def hubz(self,z):
 		"""
-		Dimensionless Hubble constant as a function of redshift z
+		Normalized Hubble parameter as a function of redshift z
 		"""
 		return self.hub(np.log(1./(1.+z)))
+	
+	def invhub(self,z):
+		"""
+		inverse of normalized hubble parameter w.r.t. redshift z
+		"""
+		return 1./self.hubz(z)
 
 	def D_H(self):
 		"""
