@@ -1,9 +1,6 @@
 import numpy as np
 from scipy.special import sph_jn
 
-# put best fit values of As and alpha from chi square analysis
-
-
 or0 = 0.0000475
 thetacmb =2.728/2.7
 def zeq(om0,h):
@@ -78,7 +75,7 @@ def Tb(k,x1,y1,om0,ob0,h):
 
 
 
-#Total Power Spectrum
+#Total Transfer function
 def Twh(k,om0,ob0,h):
 	kk = k*h
 	if ob0 == 0:
@@ -87,7 +84,6 @@ def Twh(k,om0,ob0,h):
 		ans = ob0/om0*Tb(kk,alphab(om0,ob0,h),betab(om0,ob0,h),om0,ob0,h)+(om0-ob0)/om0*Tc(kk,alphac(om0,ob0,h),betac(om0,ob0,h),om0,ob0,h)
 	return ans
 
-#print s,zeq,zd
 #BBKM Transfer function
 
 def gm(om0,ob0,h):
