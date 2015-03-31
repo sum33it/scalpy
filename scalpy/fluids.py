@@ -84,7 +84,7 @@ class LCDM(object):
 		zs = redshift at which the source is placed
 		zd = redshift at which the deflector (or lens) is present		
 		"""
-		D_ds = self.D_H()*quad(self.invhub,zd,zs)[0]
+		D_ds = self.D_H()/(1+zs)*quad(self.invhub,zd,zs)[0]
 		return (1+zd)*self.ang_dis_z(zd)*self.ang_dis_z(zs)/D_ds
 
 	def Rth(self,z):
