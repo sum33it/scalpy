@@ -47,7 +47,7 @@ def chibao(Om0,w0,wa):
 	Dh = cpl.D_H()
 	invdh = 1/Dh
 	
-	xx = [cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.106)*invdh)**2*0.106/(cpl.hubz(-0.106)))**(1./3) - 30.95, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.2)*invdh)**2*0.2/(cpl.hubz(0.2)))**(1./3) - 17.55, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.35)*invdh)**2*0.35/(cpl.hubz(0.35)))**(1./3) - 10.11, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.44)*invdh)**2*0.44/(cpl.hubz(0.44)))**(1./3) - 8.44, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.6)*invdh)**2*0.6/(cpl.hubz(0.6)))**(1./3) - 6.69, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.73)*invdh)**2*0.73/(cpl.hubz(0.73)))**(1./3) - 5.45]
+	xx = [cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.106)*invdh)**2*0.106/(cpl.hubz(0.106)))**(1./3) - 30.95, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.2)*invdh)**2*0.2/(cpl.hubz(0.2)))**(1./3) - 17.55, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.35)*invdh)**2*0.35/(cpl.hubz(0.35)))**(1./3) - 10.11, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.44)*invdh)**2*0.44/(cpl.hubz(0.44)))**(1./3) - 8.44, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.6)*invdh)**2*0.6/(cpl.hubz(0.6)))**(1./3) - 6.69, cpl.co_dis_z(1091.)*invdh/((cpl.co_dis_z(0.73)*invdh)**2*0.73/(cpl.hubz(0.73)))**(1./3) - 5.45]
 	chibao1 = np.dot(xx,np.dot(covinv,xx))
 	return chibao1
 
