@@ -428,6 +428,14 @@ class scalarpow(object):
 		in units of billion years
 		"""
 		return self.lookback_time_n(np.log(1./(1.+z)))
+	
+	def age_universe(self):
+		"""
+		Age of the Universe in units of billion years
+		"""
+		def integrand(z1):
+			return self.invhub(z1)/(1.+z1)
+		t0 = quad(integrand,0,np.inf)[0]
 
 	def D_p(self,N):
 	        yn11=self.sol()[:,4]
