@@ -184,6 +184,15 @@ class LCDM(object):
 			return self.inverse_hubble_normalized_z(z1)/(1.+z1)
 		lt = quad(integrand,0,z)[0]
 		return self.t_H()*lt
+	
+	def age_universe(self):
+		"""
+		Age of the Universe in units of billion years
+		"""
+		def integrand(z1):
+			return self.invhub(z1)/(1.+z1)
+		t0 = quad(integrand,0,np.inf)[0]
+	
 
 	def Omega_m_a(self,a):
 		return self.Om0*a**(-3)/self.hubble_normalized_a(a)**2.
