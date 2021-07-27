@@ -444,13 +444,20 @@ class scalarpow(object):
         """
         return self.lookback_time_n(np.log(1./(1.+z)))
 
-    def age_universe(self):
+    def age_of_the_universe_z(self, z):
         """
-        Age of the Universe in units of billion years
+        Age of the Universe in units of billion years (as function of redshift)
         """
-        def integrand(z1):
-            return self.invhub(z1)/(1.+z1)
-        t0 = quad(integrand, 0, np.inf)[0]
+        integrand = lambda zz: 1./((1+zz)*self.hubble_normalized_z(zz))
+        t0=quad(integrand,z,np.inf)[0]
+        return t0*self.t_H()
+
+    def z_from_age_of_the_universe(self,t):
+        """
+        Redshift for the given age of universe in billion years
+        """
+        func = lambda zz: self.age_of_the_universe_z(zz)-t
+        return fsolve(func,0.5)[0]
 
     def D_p(self, N):
         yn11 = self.sol()[:, 4]
