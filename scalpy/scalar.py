@@ -318,11 +318,20 @@ class scalarpow(object):
 
     def z_from_luminosity_distance(self, distance):
         """
-        This function gives redshift z for a given luminosity 
+        This function gives redshift z for a given luminosity
         distance (Mpc)
         """
         def dis(z):
             return self.luminosity_distance_z(z) - distance
+        return fsolve(dis, 0.5)[0]
+
+    def z_from_comoving_distance(self, distance):
+        """
+        This function gives redshift z for a given comoving
+        distance (Mpc)
+        """
+        def dis(z):
+            return self.comoving_distance_z(z) - distance
         return fsolve(dis, 0.5)[0]
 
     def time_delay_distance(self, zd, zs):
@@ -451,7 +460,7 @@ class scalarpow(object):
     # Normalized solution for the growing mode
     def D_plus_n(self, N):
         """
-        Normalized solution for the growing mode as a function of efolding 
+        Normalized solution for the growing mode as a function of efolding
         """
         return self.D_p(N)/self.D_p(0.)
 
@@ -500,7 +509,7 @@ class scalarpow(object):
         """
         Matter Power Spectra Pk in units if h^{-3}Mpc^{3} as a function of k in units of [h Mpc^{-1}]
         and z;
-        Transfer function is taken to be BBKS 
+        Transfer function is taken to be BBKS
         Ref: Bardeen et. al., Astrophys. J., 304, 15 (1986)
         """
         return self.A0bbks()*k**self.ns*Tbbks(k, self.Omega_m_z(0), self.Ob0, self.h)**2.*self.D_plus_z(z)**2.
@@ -509,14 +518,14 @@ class scalarpow(object):
         """
         Matter Power Spectra Pk in units if h^{-3} Mpc^{3} as a function of k in units of [h Mpc^{-1}]
         and z;
-        Transfer function is taken to be Eisenstein & Hu  
+        Transfer function is taken to be Eisenstein & Hu
         (ref(Eisenstein and Hu, Astrophys. J., 496, 605 (1998)))
         """
         return self.A0wh()*k**self.ns*Twh(k, self.Omega_m_z(0), self.Ob0, self.h)**2.*self.D_plus_z(z)**2.
 
     def DPk_bbks(self, k, z):
         """
-        Dimensionless Matter Power Spectra Pk  as a function of k in 
+        Dimensionless Matter Power Spectra Pk  as a function of k in
         units of [h Mpc^{-1}] and z;
         Transfer function is taken to be BBKS
         Ref: Bardeen et. al., Astrophys. J., 304, 15 (1986)
@@ -525,9 +534,9 @@ class scalarpow(object):
 
     def DPk_wh(self, k, z):
         """
-        Dimensionless Matter Power Spectra Pk  as a function of k in 
+        Dimensionless Matter Power Spectra Pk  as a function of k in
         units of [h Mpc^{-1}] and z;
-        Transfer function is taken to be Eisenstein & Hu 
+        Transfer function is taken to be Eisenstein & Hu
         (ref(Eisenstein and Hu, Astrophys. J., 496, 605 (1998)))
         """
         return k**3.*self.Pk_wh(k, z)/(2.0*np.pi**2.)
@@ -817,7 +826,7 @@ class galileonpow(scalarpow):
     # Normalized solution for the growing mode
     def D_plus_n(self, N):
         """
-        Normalized solution for the growing mode as a function of efolding 
+        Normalized solution for the growing mode as a function of efolding
         """
         return self.D_p(N)/self.D_p(0.)
 

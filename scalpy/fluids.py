@@ -108,11 +108,20 @@ class LCDM(object):
 
     def z_from_luminosity_distance(self, distance):
         """
-        This function gives redshift z for a given luminosity 
+        This function gives redshift z for a given luminosity
         distance (Mpc)
         """
         def dis(z):
             return self.luminosity_distance_z(z) - distance
+        return fsolve(dis, 0.5)[0]
+
+    def z_from_comoving_distance(self, distance):
+        """
+        This function gives redshift z for a given comoving
+        distance (Mpc)
+        """
+        def dis(z):
+            return self.comoving_distance_z(z) - distance
         return fsolve(dis, 0.5)[0]
 
     def time_delay_distance(self, zd, zs):
@@ -120,7 +129,7 @@ class LCDM(object):
         Time delay distance used in strong lensing cosmography
         (See Suyu et. al., Astrophys. J. 766, 70, 2013; arxiv:1208.6010)
         zs = redshift at which the source is placed
-        zd = redshift at which the deflector (or lens) is present		
+        zd = redshift at which the deflector (or lens) is present
         """
         D_ds = self.D_H()/(1+zs)*quad(self.invhub, zd, zs)[0]
         return (1+zd)*self.ang_dis_z(zd)*self.ang_dis_z(zs)/D_ds
@@ -159,7 +168,7 @@ class LCDM(object):
 
     def cmb_shift_parameter(self):
         """
-        CMB Shift parameter at decoupling redshift 
+        CMB Shift parameter at decoupling redshift
         (see Shafer and Huterer, arxiv:1312.1688v2)
         Output:
           R (shift parameter)
@@ -278,25 +287,25 @@ class LCDM(object):
         """
         Matter Power Spectra Pk in units if h^{-3}Mpc^{3} as a function of k in units of [h Mpc^{-1}]
         and z;
-        Transfer function is taken to be Eisenstein & Hu 
+        Transfer function is taken to be Eisenstein & Hu
         Ref: Eisenstein and Hu, Astrophys. J., 496, 605 (1998)
         """
         return self.A0wh()*k**self.ns*Twh(k, self.Om0, self.Ob0, self.h)**2.*self.D_plus_z(z)**2.
 
     def DPk_bbks(self, k, z):
         """
-        Dimensionless Matter Power Spectra Pk  as a function of k in 
+        Dimensionless Matter Power Spectra Pk  as a function of k in
         units of [h Mpc^{-1}] and z;
-        Transfer function is taken to be BBKS 
+        Transfer function is taken to be BBKS
         Ref: Bardeen et. al., Astrophys. J., 304, 15 (1986)
         """
         return k**3.*self.Pk_bbks(k, z)/(2.0*np.pi**2.)
 
     def DPk_wh(self, k, z):
         """
-        Dimensionless Matter Power Spectra Pk  as a function of k in 
+        Dimensionless Matter Power Spectra Pk  as a function of k in
         units of [h Mpc^{-1}] and z;
-        Transfer function is taken to be Eisenstein & Hu 
+        Transfer function is taken to be Eisenstein & Hu
         Ref: Eisenstein and Hu, Astrophys. J., 496, 605 (1998)
         """
         return k**3.*self.Pk_wh(k, z)/(2.0*np.pi**2.)
@@ -305,8 +314,8 @@ class LCDM(object):
 class wCDM(LCDM):
     """
     A Class to calculate cosmological observables for a model with CDM and dark energy
-    for which equation of state w is constant but not equal to -1. See hubble_normalized_z function 
-    for details.  
+    for which equation of state w is constant but not equal to -1. See hubble_normalized_z function
+    for details.
 
     parameters are:
     Om0 : present day density parameter for total matter (baryonic + dark)
@@ -335,7 +344,7 @@ class w0waCDM(LCDM):
     A Class to calculate cosmological observables for a model with CDM and dark energy
     for which equation of state w is parametrized as:
     w(a) = w0 + wa*(1-a)
-    where 'a' is the scale factor and w0,wa are constants in Taylor expansion of 
+    where 'a' is the scale factor and w0,wa are constants in Taylor expansion of
     variable equation of state w(a)
 
     parameters are:
@@ -366,7 +375,7 @@ class w0waCDMzi(LCDM):
     A Class to calculate cosmological observables for a model with CDM and dark energy
     for which equation of state w is parametrized as:
     w(a) = w0 + wa*(1-a)
-    where 'a' is the scale factor and w0,wa are constants in Taylor expansion of 
+    where 'a' is the scale factor and w0,wa are constants in Taylor expansion of
     variable equation of state w(a)
 
     parameters are:
