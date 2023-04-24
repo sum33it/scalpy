@@ -153,6 +153,13 @@ class LCDM(object):
         b2 = 0.238*(self.Om0*self.h**2)**0.223
         return 1291.*(self.Om0*self.h**2)**0.251*(1+b1*(self.Om0*self.h**2)**b2)/(1+0.659*(self.Om0*self.h**2)**0.828)
 
+    def z_equality(self):
+        """
+        Gives the redshit of matter-radiation equality
+        Eisenstein and Hu; arxiv:astro-ph/9709112
+        """
+        return 25000*self.Om0*self.h**2*(2.728/2.7)**-4
+
     def sound_horizon(self, z):
         """
         Gives the sound horizon at redshift z
@@ -211,7 +218,7 @@ class LCDM(object):
         Redshift for the given age of universe in billion years
         """
         func = lambda zz: self.age_of_the_universe_z(zz)-t
-        return fsolve(func,0.5)[0]
+        return fsolve(func,5)[0]
 
     def Omega_m_a(self, a):
         return self.Om0*a**(-3)/self.hubble_normalized_a(a)**2.
